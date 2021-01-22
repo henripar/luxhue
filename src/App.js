@@ -88,7 +88,7 @@ const Light = (props) => {
     setLightDetails(e)
     axios
     .put(
-      `${process.env.REACT_APP_BRIDGE_URL}/${props.number}/state`,
+      `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}/state`,
       { bri: e }
     )
     .then((result) => {

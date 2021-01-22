@@ -17,4 +17,4 @@ You will need to have Philips Hue Bridge device in order to make this applicatio
 
 ![Image of single light view](public/frontpage.png)
 
-![Image of single light view](public/workdesk.png)
+![Image of single light view](public/tv.png)

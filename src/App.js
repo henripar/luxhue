@@ -163,7 +163,7 @@ function App() {
         <h4 className="menu-header">Your Lights</h4>
       {lights.map((e)=> {
         return (
-          <div className="menu-item" data-value={e[1].name} onClick={changeLight}>
+          <div className={`menu-item ${activeLight == e[1].name ? 'active-item' : ''}`} data-value={e[1].name} onClick={changeLight}>
             {e[1].modelid == 'LCL001' ?           <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1">
     <g stroke="gray" stroke-width="1" fill="none" fill-rule="evenodd">
         <g fill="#1c1e24">
@@ -204,8 +204,8 @@ function App() {
            (
             <div>
               <h1>   Welcome to</h1>
-              <h1> Philips Hue </h1>
-              <h1>Light controller App!</h1>
+              <h1> Hue Lite! </h1>
+              <h2>The single best way to control your Philips Hue lights.</h2>
                 <h3>Choose a light from left panel to get started.</h3>
               </div>
           ): null}

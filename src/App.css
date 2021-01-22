@@ -70,12 +70,28 @@ div {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
+  transition: background-color .1s ease-out;
+  border-left: #1c1e24 solid 3px;
 }
+.active-item {
+  border-width: 3px;
+  border-left: solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      #9E3F73, 
+      #C67B75
+    ) 1 100%;
+    background-color: #23272e;
+}
+
 svg {
   margin: 0 1em;
 }
 .menu-item:hover{
   background-color: #23272e;
+  border-left: #23272e solid 3px;
 }
 
 .light-info-container {

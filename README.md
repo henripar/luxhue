@@ -1,4 +1,6 @@
-# Hue controller
+# Hue lite
+
+Pronounced as ' Hue light'
 
 Version 0.1
 

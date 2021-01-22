@@ -1,4 +1,4 @@
-# Hue lite
+# Hue Lite
 
 Pronounced as ' Hue light'
 

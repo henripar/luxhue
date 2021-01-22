@@ -1,8 +1,9 @@
 # Hue Lite
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/henripar/hue-lite)
+
 Pronounced as ' Hue light'
 
-Version 0.1
 
 Control your Philips hue lights from your computer. 
 

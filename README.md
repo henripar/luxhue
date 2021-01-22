@@ -1,6 +1,6 @@
 # Hue Lite
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/henripar/hue-lite)
+![GitHub top language](https://img.shields.io/github/languages/top/henripar/hue-lite)  ![GitHub package.json version](https://img.shields.io/github/package-json/v/henripar/hue-lite)
 
 Pronounced as ' Hue light'
 

@@ -9,13 +9,10 @@ Supported features includes:
 - Adjusting brightness of the light  
 - Turning lights on / off
 
-You will need to have Philips Hue Bridge device in order to make this pplication work. This app gets all the data from the API that is running on your local Hue Bridge.
+You will need to have Philips Hue Bridge device in order to make this application work. This app gets all the data from the API that is running on your local Hue Bridge.
 
 ## Images
 
 ![Image of single light view](public/frontpage.png)
 
 ![Image of single light view](public/workdesk.png)
-
-In the project directory, you can run:
-

@@ -1,11 +1,11 @@
 {
-  "name": "hue-controller",
+  "name": "luxhue",
   "version": "0.1.0",
   "private": true,
   "description": "Philips Hue light controller application",
   "author": "Henri Parviainen",
   "build": {
-    "appId": "com.HueController.app",
+    "appId": "com.luxhue.app",
     "icon": "build/icon.png"
   },
   "main": "public/electron.js",

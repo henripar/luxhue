@@ -19,7 +19,8 @@ html {
   background-color: #282c34;
 }
 body {
-  height: 100vh;;
+  height: 100vh;
+  -webkit-app-region:drag;
 }
 
 button {
@@ -30,6 +31,7 @@ button {
   border-radius: 17px;
   color: whitesmoke;
   cursor: pointer;
+  -webkit-app-region: no-drag;
 }
 button:hover {
   transform: scale(0.98) translateY(1px);
@@ -45,9 +47,7 @@ div {
   margin-bottom: 1em;
   color: #fefefec5;
 }
-.image-disable {
-  
-}
+
 .main-container {
   display: grid;
   grid-template-columns: 23% auto;
@@ -109,6 +109,7 @@ svg {
   width: 200px !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  -webkit-app-region: no-drag;
 }
 
 
@@ -117,6 +118,7 @@ svg {
   background: -webkit-linear-gradient(left, #f0c27b, #b57ab2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding-top: 1em;
 }
 
 #root {

@@ -1,4 +1,4 @@
-# Hue Lite
+# Luxhue
 
 ![GitHub top language](https://img.shields.io/github/languages/top/henripar/hue-lite)  ![GitHub package.json version](https://img.shields.io/github/package-json/v/henripar/hue-lite)
 

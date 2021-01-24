@@ -9,20 +9,28 @@ import { CirclePicker } from 'react-color';
 import * as ColorConverter from './color-converter';
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import smartplug_on from './assets/smartplug_on.png';
+import smartplug_off from './assets/smartplug_off.png'
 
 
 const Image = (props) => {
   console.log(props);
-  const [image, setImage] = useState(props.type1 === 'LCL001' ? stripe2 : bulb);
+  const [image, setImage] = useState(props.type1 === 'LCL001' ? stripe2 : (props.type1 === 'LOM001' ? smartplug_off : bulb));
   useEffect(() => {
-    if (props.type1 == 'LCL001' && props.imageState === false) {
+    if (props.type1 == ('LCL001' || 'LST002' || 'LST001') && props.imageState === false) {
       setImage(stripe2);
-    } else if (props.type1 == 'LWA001' && props.imageState === false) {
+    } else if (props.type1 == ('LWA001' || 'LCT001' || 'LCT007' || 'LCT010' || 'LCT014' || 'LCT015' || 'LCT016' || 'LWB004' || 'LWB006' || 'LWB007' || 'LWB010' || 'LWB014' || 'LTW001' || 'LTW004' || 'LTW010' || 'LTW015' ) && props.imageState === false) {
       setImage(bulb);
-    } else if (props.type1 == 'LWA001' && props.imageState === true) {
+    } else if (props.type1 == ('LWA001' || 'LCT001' || 'LCT007' || 'LCT010' || 'LCT014' || 'LCT015' || 'LCT016' || 'LWB004' || 'LWB006' || 'LWB007' || 'LWB010' || 'LWB014' || 'LTW001' || 'LTW004' || 'LTW010' || 'LTW015' ) && props.imageState === true) {
       setImage(bulb2);
-    } else if (props.type1 == 'LCL001' && props.imageState === true) {
+    } else if (props.type1 == ('LCL001' || 'LST002' || 'LST001') && props.imageState === true) {
       setImage(stripe);
+    }
+    else if (props.type1 == 'LOM001' && props.imageState === true) {
+      setImage(smartplug_on)
+    }
+    else if (props.type1 == 'LOM001' && props.imageState === false) {
+      setImage(smartplug_off)
     }
   }, [props.imageState]);
   return <img className='light-image' src={image} />;

@@ -11,6 +11,7 @@ import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import smartplug_on from './assets/smartplug_on.png';
 import smartplug_off from './assets/smartplug_off.png'
+import bridgegif from './assets/bridgegif.gif'
 
 
 const Image = (props) => {
@@ -42,7 +43,7 @@ const Light = (props) => {
   useEffect(() => {
     axios
     .get(
-      `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}`
+      `${props.url}/lights/${props.number}`
     )
     .then((result) => {
       setLightDetails(result.data.state.bri);
@@ -55,7 +56,7 @@ const Light = (props) => {
   const turnLightOn = (number) => {
     axios
       .put(
-        `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}/state`,
+        `${props.url}/lights/${props.number}/state`,
         { on: true }
       )
       .then((result) => {
@@ -66,7 +67,7 @@ const Light = (props) => {
   const turnLightOff = () => {
     axios
       .put(
-        `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}/state`,
+        `${props.url}/lights/${props.number}/state`,
         { on: false }
       )
       .then((result) => {
@@ -83,7 +84,7 @@ const Light = (props) => {
     const y = newcolor[1].toString();
     axios
     .put(
-      `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}/state`,
+      `${props.url}/lights/${props.number}/state`,
       { xy: [Number(x.slice(0, 4)), Number(y.slice(0,4)) ] }
     )
     .then((result) => {
@@ -96,7 +97,7 @@ const Light = (props) => {
     setLightDetails(e)
     axios
     .put(
-      `${process.env.REACT_APP_BRIDGE_URL}/lights/${props.number}/state`,
+      `${props.url}/lights/${props.number}/state`,
       { bri: e }
     )
     .then((result) => {
@@ -106,7 +107,7 @@ const Light = (props) => {
 
 
   return (
-    <div>
+    <div className="single-light-item">
       <Image
         type1={props.modelid}
         state={props.state}
@@ -142,21 +143,30 @@ const Light = (props) => {
 function App() {
   const [lights, setLights] = useState([]);
   const [activeLight, setActiveLight]= useState('');
+  const [apiUrl, setApiUrl] = useState(false);
+  const [apiUrlValue, setApiUrlValue] = useState('');
+  const [showBridgeInstruction, setShowBridgeInstruction] = useState(false);
+
   useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BRIDGE_URL}/lights`
-      )
-      .then((result) => {
-        console.log(result.data);
-        var array = Object.keys(result.data).map((key) => [
-          Number(key),
-          result.data[key]
-        ]);
-        setLights(array);
-        console.log(array);
-      });
-  }, []);
+    const url = window.localStorage.getItem('bridgeurl');
+    if(url) {
+      setApiUrl(true);
+      setApiUrlValue(url);
+      axios
+        .get(
+          `${url}/lights`
+        )
+        .then((result) => {
+          console.log(result.data);
+          var array = Object.keys(result.data).map((key) => [
+            Number(key),
+            result.data[key]
+          ]);
+          setLights(array);
+          console.log(array);
+        });
+    }
+  }, [apiUrl]);
 
   const changeLight = (e) => {
     const untrimmed = e.target.getAttribute('data-value')
@@ -173,10 +183,29 @@ function App() {
     setActiveLight(parentValue)
   }
 
+  const findBridge = () => {
+    axios.get('https://discovery.meethue.com').then(res => {
+      console.log(res.data)
+      axios.post(`http://${res.data[0].internalipaddress}/api`, {"devicetype": "Luxhue#macbookProu henri"}).then(response => {
+        console.log(response);
+    if(response.data[0].error) {
+      console.log(response.data[0])
+      setShowBridgeInstruction(true);
+    } else if (response.data[0].success) {
+      window.localStorage.setItem('bridgeurl', `http://${res.data[0].internalipaddress}/api/${response.data[0].success.username}`);
+      setApiUrl(true);
+      setShowBridgeInstruction(false);
+    }
+      })
+    })
+  }
+
   return (
     <div className='App'>
-      <div className='main-container'>
+      <div className={`${!apiUrl ? "" : "main-container"}`}>
+      { apiUrl ?
       <div className="menu-container">
+       
         <h4 className="menu-header">Your Lights</h4>
       {lights.map((e)=> {
         return (
@@ -207,7 +236,8 @@ function App() {
             </div>
         )
       })}
-      </div>
+      </div> : null
+}
       <div className="light-info-container">
 
         
@@ -221,18 +251,32 @@ function App() {
               name={e[1].name}
               modelid={e[1].modelid}
               state={e[1].state.on}
+              url={apiUrlValue}
             ></Light>
           );
         })}
-            {!activeLight ? 
+            {!activeLight && apiUrl ? 
            (
             <div>
-              <h1>   Welcome to</h1>
-              <h1> Luxhue! </h1>
-              <h2>The single best way to control your Philips Hue lights.</h2>
+              <h1>   Congrats!</h1>
+              <h1> Your setup is all ready.</h1>
+              <h2>You'll find all your connected lights from the panel on left.</h2>
                 <h3>Choose a light from left panel to get started.</h3>
               </div>
-          ): null}
+          ): (!activeLight && localStorage.getItem('ip') === null ? <div>
+          {showBridgeInstruction ? <div>
+            <img src={bridgegif} className="huebridge-gif" alt="Hue bridge image"/>
+          <p>Please press the button on your Philips Hue Bridge.</p>
+          <button className="button-fancy" onClick={findBridge}>Okay, already pressed!</button>
+          </div>: 
+          <div className="absolute-center">
+             <h1>   Welcome to</h1>
+              <h1> Luxhue! </h1>
+              <h2>Let's get started by connecting to your Philips Hue Bridge.</h2>
+          <button className="button-fancy" onClick={findBridge}> Connect to your Bridge</button>
+          </div>}
+          </div>
+           : null)}
         </div>
       </div>
     </div>

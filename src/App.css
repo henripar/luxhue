@@ -32,10 +32,15 @@ button {
   color: whitesmoke;
   cursor: pointer;
   -webkit-app-region: no-drag;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+
+
 }
 button:hover {
-  transform: scale(0.98) translateY(1px);
-}
+  transform:  scale(0.96) translateY(1px)
+;}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -124,6 +129,35 @@ svg {
 #root {
   margin-bottom: 0 !important;
 }
+
+.huebridge-gif {
+  width: 370px;
+}
+
+.button-fancy {
+  border: solid 3px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #f0c27b, #b57ab2);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #282c34 inset;
+  margin-top: 1em;
+  transform:  perspective(1000px) translateZ(0px);
+  transition: all 0.4s ease-in-out;
+}
+
+.button-fancy:hover {
+    box-shadow: none;
+    color: black;
+    transform:  perspective(1000px) translateZ(90px) scale(1.0) translateY(0px);
+}
+
+.absolute-center {
+  position: absolute;
+  top: 40%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

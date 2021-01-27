@@ -12,11 +12,12 @@ import 'rc-slider/assets/index.css';
 import smartplug_on from './assets/smartplug_on.png';
 import smartplug_off from './assets/smartplug_off.png'
 import bridgegif from './assets/bridgegif.gif'
-
+import general_off from './assets/general.png'
+import general_on from './assets/general_on.png'
 
 const Image = (props) => {
   console.log(props);
-  const [image, setImage] = useState(props.type1 === 'LCL001' ? stripe2 : (props.type1 === 'LOM001' ? smartplug_off : bulb));
+  const [image, setImage] = useState(props.type1 === 'LCL001' ? stripe2 : (props.type1 === 'LOM001' ? smartplug_off : general_off));
   useEffect(() => {
     if (props.type1 == ('LCL001' || 'LST002' || 'LST001') && props.imageState === false) {
       setImage(stripe2);
@@ -32,6 +33,12 @@ const Image = (props) => {
     }
     else if (props.type1 == 'LOM001' && props.imageState === false) {
       setImage(smartplug_off)
+    } 
+    else if (props.imageState === false) {
+      setImage(general_off)
+    }
+    else if (props.imageState === true) {
+      setImage(general_on)
     }
   }, [props.imageState]);
   return <img className='light-image' src={image} />;
@@ -186,7 +193,7 @@ function App() {
   const findBridge = () => {
     axios.get('https://discovery.meethue.com').then(res => {
       console.log(res.data)
-      axios.post(`http://${res.data[0].internalipaddress}/api`, {"devicetype": "Luxhue#macbookProu henri"}).then(response => {
+      axios.post(`http://${res.data[0].internalipaddress}/api`, {"devicetype": "Luxhue#desktop luxhue1"}).then(response => {
         console.log(response);
     if(response.data[0].error) {
       console.log(response.data[0])

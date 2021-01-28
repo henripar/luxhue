@@ -13,7 +13,7 @@ You will need to have Philips Hue Bridge device in order to make this applicatio
 
 ## Getting started
 
-1. Fork this repository and then clone your fork by running
+1. Fork this repository and then clone your fork by running  
 `git clone https://github.com/<your_username>/luxhue.git`
 2. Run `npm install` to install all the dependencies.
  

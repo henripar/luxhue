@@ -130,17 +130,17 @@ const Light = (props) => {
         OFF{' '}
       </button>
       <div className="tweaker">
-        {props.modelid == 'LCL001'? 
+        {props.info.capabilities.control.mindimlevel ? 
         <div>
           <p>Brightness</p>
         <Slider min={1} max={"245"} lightDetails={lightDetails} onChange={changeSliderValue} defaultValue={lightDetails} value={lightDetails} railStyle={{width: '200px'}} trackStyle={{backgroundColor: 'rgba(253, 212, 2, .7)', width: '150px'}} handleStyle={{border: 'transparent 2px solid'}}></Slider>
-        <p>Color</p>
-        <CirclePicker onChangeComplete={changeColor}></CirclePicker>
-        </div> : ( props.modelid == 'LWA001' ? 
+        </div> : <div></div> }
+        {
+        ( props.info.capabilities.control.colorgamut ? 
         <div>
-        <p>Brightness</p>
-        <Slider min={1} max={"245"} onChange={changeSliderValue} defaultValue={lightDetails} value={lightDetails} railStyle={{width: '200px'}} trackStyle={{backgroundColor: 'rgba(253, 212, 2, .7)', width: '150px'}} handleStyle={{border: 'transparent 2px solid'}}></Slider>
-        </div>: null)
+            <p>Color</p>
+        <CirclePicker onChangeComplete={changeColor}></CirclePicker>
+      </div>: <div></div>)
         }
       </div>
     </div>
@@ -259,6 +259,7 @@ function App() {
               modelid={e[1].modelid}
               state={e[1].state.on}
               url={apiUrlValue}
+              info={e[1]}
             ></Light>
           );
         })}

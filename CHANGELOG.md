@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2021-01-25
 ### Added
 - Feature for finding and connecting to Philips Hue bridge in local network.
-- Fetature of getting all the info of connected lights on Philips Hue bridge.
-- Fetatures to changing connected lights on and off, changing color of lights that support color changes and adjusting brightness of lights that support it.
+- Feature of getting all the info of connected lights on Philips Hue bridge.
+- Features to changing connected lights on and off, changing color of lights that support color changes and adjusting brightness of lights that support it.
 - README now contains basic info of the project.
 - MIT License
 

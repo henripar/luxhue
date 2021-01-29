@@ -24,7 +24,7 @@
   <a href="#license">License</a>
 </p>
 
-![Image of single light view](public/tv2.png)
+![Image of single light view](public/Luxhuegif.gif)
 
 
 ## Getting started
@@ -40,7 +40,6 @@ git clone https://github.com/<your_username>/luxhue.git
 
 ## Key Features
 
-Features:  
 - Changing color of the light
 - Adjusting brightness of the light  
 - Turning lights on / off

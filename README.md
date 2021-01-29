@@ -1,5 +1,3 @@
-
-<img src="src/assets/icon.png" width="128px">  
 <h1 align="center">
   <br>
   <a href="http://www.luxhue.org"><img src="src/assets/icon.png" alt="Luxhue" width="200"></a>

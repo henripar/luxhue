@@ -46,7 +46,7 @@ git clone https://github.com/<your_username>/luxhue.git
 - Automatically connecting to Hue Bridge
 - Automatically getting all the lights connected to Hue bridge
 
-You will need to have Philips Hue Bridge device in order to make this application work. This app gets all the data from the API that is running on your local Hue Bridge.
+*You will need to have Philips Hue Bridge device in order to make this application work. This app gets all the data from the API that is running on your local Hue Bridge.*
 
 ## Download
 

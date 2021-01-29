@@ -14,6 +14,7 @@ import smartplug_off from './assets/smartplug_off.png'
 import bridgegif from './assets/bridgegif.gif'
 import general_off from './assets/general.png'
 import general_on from './assets/general_on.png'
+import appIcon from './assets/icon.png'
 
 const Image = (props) => {
   const [image, setImage] = useState(props.type1 === 'LCL001'  || props.type1 === 'LST002' || props.type1 === 'LST001' ? stripe2 : (props.type1 === 'LOM001' ? smartplug_off : (props.type1 === 'LWA001' || props.type1 === 'LCT001' || props.type1 === 'LCT007' || props.type1 === 'LCT010' || props.type1 === 'LCT014' || props.type1 === 'LCT015' || props.type1 === 'LCT016' || props.type1 === 'LWB004' || props.type1 === 'LWB006' || props.type1 === 'LWB007' || props.type1 === 'LWB010' || props.type1 === 'LWB014' || props.type1 === 'LTW001' || props.type1 === 'LTW004' || props.type1 === 'LTW010' || props.type1 === 'LTW015'? bulb : general_off)));
@@ -256,8 +257,7 @@ function App() {
             {!activeLight && apiUrl ? 
            (
             <div>
-              <h1>   Congrats!</h1>
-              <h1> Your setup is all ready.</h1>
+              <img src={appIcon} className="light-image luxhue-logo" alt="Luxhue logo"/>
               <h2>You'll find all your connected lights from the panel on left.</h2>
                 <h3>Choose a light from left panel to get started.</h3>
               </div>

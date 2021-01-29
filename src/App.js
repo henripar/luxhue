@@ -146,6 +146,7 @@ function App() {
   const [activeLight, setActiveLight]= useState('');
   const [apiUrl, setApiUrl] = useState(false);
   const [apiUrlValue, setApiUrlValue] = useState('');
+  const [bridgeError, setBridgeError] = useState(false);
   const [showBridgeInstruction, setShowBridgeInstruction] = useState(false);
 
   useEffect(() => {
@@ -184,8 +185,13 @@ function App() {
   const findBridge = () => {
     axios.get('https://discovery.meethue.com').then(res => {
       console.log(res.data)
+      if(res.data.length < 1) {
+        setBridgeError(true);
+      }
+      else {
       axios.post(`http://${res.data[0].internalipaddress}/api`, {"devicetype": "Luxhue#desktop luxhue1"}).then(response => {
         console.log(response);
+        setBridgeError(false);
     if(response.data[0].error) {
       console.log(response.data[0])
       setShowBridgeInstruction(true);
@@ -194,7 +200,7 @@ function App() {
       setApiUrl(true);
       setShowBridgeInstruction(false);
     }
-      })
+      })}
     })
   }
 
@@ -273,6 +279,7 @@ function App() {
               <h2>Let's get started by connecting to your Philips Hue Bridge.</h2>
           <button className="button-fancy" onClick={findBridge}> Connect to your Bridge</button>
           </div>}
+          {bridgeError ? <p className="bottom10">Looks like we can't seem to find any Philips Hue Bridges in your local network. If you are using VPN, please turn if off and try again.</p> : null}
           </div>
            : null)}
         </div>

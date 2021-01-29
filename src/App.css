@@ -161,3 +161,10 @@ svg {
 .luxhue-logo {
   margin-top: 12%;
 }
+
+.bottom10 {
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  transform: translate(-50%, -50%);
+}

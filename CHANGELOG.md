@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2021-02-01
+### Changed
+- App icon / logo
+- New welcome screen message
+
+### Fixed
+- Error handling if no Philips Hue Bridges are found
+
+
 ## [0.1.1] - 2021-01-28
 ### Changed
 - Color changing and light dimming features now work with all Philips hue devices that support these features.
@@ -22,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - README now contains basic info of the project.
 - MIT License
 
-[Unreleased]: https://github.com/henripar/luxhue/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/henripar/luxhue/compare/v0.1.2...HEAD
 [0.1.0]: https://github.com/henripar/luxhue/releases/tag/v0.1.0
 [0.1.1]: https://github.com/henripar/luxhue/releases/tag/v0.1.1
+[0.1.2]: https://github.com/henripar/luxhue/releases/tag/v0.1.2
